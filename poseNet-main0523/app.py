@@ -5,16 +5,14 @@ from flask import Flask, jsonify, request, render_template
 app = Flask(__name__)
 
 # p5로 보내는 신호
-serverText =["python_HOST"]
-clientText={}
-user="Hello fromUnity"
-
+serverText = ["python_HOST"]
+clientText = {}
+user = "Hello fromUnity"
 
 
 # clientText=유니티로 보내는 신호
 
 # 바탕화면
-
 
 
 @app.route("/")
@@ -23,12 +21,12 @@ def home_page():
 
 
 # 또다른 페이지. 겟과 포스트를 수행하는
-#def on_json_loading_failed_return_dict(e):
-    #return ""
+# def on_json_loading_failed_return_dict(e):
+# return ""
+
 
 @app.route("/test", methods=["GET", "POST"])
 def testfn():
-
 
     # GET request
 
@@ -41,58 +39,34 @@ def testfn():
         # 클라이언트들이 기록한 Json 로그를 다시 클라이언트들에게
         clientText = request.get_json()
 
-        #state_FromUnity=clientText['state_FromUnity']
-        #foo=clientText['foo']
+        # state_FromUnity=clientText['state_FromUnity']
+        # foo=clientText['foo']
 
+        # else:
+        # print("greeting: NONE")
 
-
-        #else:
-            #print("greeting: NONE")
-
-
-
-
-        #foo=clientText['foo']
-        #print(greeting)
-        #print(foo)
+        # foo=clientText['foo']
+        # print(greeting)
+        # print(foo)
 
         serverText.append(clientText)
         print(clientText)
 
         print(len(serverText))
 
+        # if(len[clientText]>50):
 
-            #if(len[clientText]>50):
-
-
-        #fromUnity=  request.form["fromUnity"]
-        #print(fromUnity)
-        #print("clientText",clientText,type(clientText))  # parse as JSON
+        # fromUnity=  request.form["fromUnity"]
+        # print(fromUnity)
+        # print("clientText",clientText,type(clientText))  # parse as JSON
         return clientText, 200
 
+        # fromUnity=request.form["fromUnity"]
 
+        # print(fromUnity)
+        # serverText.append(fromUnity)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #fromUnity=request.form["fromUnity"]
-
-        #print(fromUnity)
-        #serverText.append(fromUnity)
-
-         # parse as JSON
-
+        # parse as JSON
 
 
 # 서버 실행시키기
