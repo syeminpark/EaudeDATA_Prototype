@@ -22,7 +22,6 @@ sock = U.UdpComms(
 # 라이다 센서 변수
 line = 50  # 멀고 가깝고 기준
 maxDist = 130  # 센서 벗어나는 거리
-
 testCounter = 1
 closeCounter = 1
 farCounter = 1
