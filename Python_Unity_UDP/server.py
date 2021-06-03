@@ -130,7 +130,7 @@ while True:
         result = "null"
 
         ######### 테스트용 지우셈 #################
-        state = 1
+        state = 2
 
     elif state == 1:
 
