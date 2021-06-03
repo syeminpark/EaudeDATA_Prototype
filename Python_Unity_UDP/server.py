@@ -8,7 +8,7 @@
 
 # Example of a Python UDP server
 
-import UdpComms as U
+import UDPComms as U
 import serial
 from serial import Serial
 import time
