@@ -10,25 +10,59 @@
 
 import UdpComms as U
 import serial
+from serial import Serial
 import time
+import csv
 
 # Create UDP socket to use for sending (and receiving)
-sock = U.UdpComms(udpIP="127.0.0.1", portTX=8000, portRX=8001, enableRX=True, suppressWarnings=True)
+sock = U.UdpComms(
+    udpIP="127.0.0.1", portTX=8000, portRX=8001, enableRX=True, suppressWarnings=True
+)
 
 # 라이다 센서 변수
-line = 50    # 멀고 가깝고 기준
+line = 50  # 멀고 가깝고 기준
 maxDist = 130  # 센서 벗어나는 거리
 
 testCounter = 1
 closeCounter = 1
 farCounter = 1
-state = 0  # 유니티 인풋 default=False
-ser = serial.Serial("COM5", 115200)
+total = 0
+state = 1  # 유니티 인풋 default=False
+ser = serial.Serial("/dev/cu.usbserial-14110", 115200)
+dis = 0
 i = 0
 
-isSent=False
-isSame=False
+peopleNum = 0
 
+isSent = False
+isSame = False
+
+
+def addDis(val):
+    global total
+    total += val
+    print(total)
+
+
+def saveToFile(val):
+    global peopleNum
+    text = str(val)
+    f = open(
+        "//Users/marshmalloww/Desktop/savetofile/lidar.csv",
+        "a",
+        encoding="utf-8",
+        newline="",
+    )
+    wr = csv.writer(f)
+    if peopleNum == 0:
+        wr.writerow(["Num", "Val"])
+        wr.writerow([peopleNum, text])
+
+    else:
+        wr.writerow([peopleNum, text])
+    f.close()
+
+    peopleNum += 1
 
 
 def getTFminiData():
@@ -43,97 +77,90 @@ def getTFminiData():
             if recv[0] == 0x59 and recv[1] == 0x59:  # python3
                 distance = recv[2] + recv[3] * 256
                 strength = recv[4] + recv[5] * 256
-                print(distance)
+                # print(distance)
 
-                if(distance < maxDist):
-                    if(distance > line):
+                if distance < maxDist:
+                    if distance > line:
                         global closeCounter
                         closeCounter += 1
+                        addDis(distance)
+
                     else:
                         global farCounter
                         farCounter += 1
+                        addDis(distance)
 
                 # 테스트용. 차후에 지우셈
 
                 global testCounter
                 testCounter += 1
-                if(testCounter > 500):
-                    state=2
-                    break
 
-                # 대체물
-                 # checkUnity()
-                # if(send !=1):
-                    # break
+                # print(testCounter)
+                if testCounter > 500:
+                    global state
+                    state = 2
+
+                    global dis
+                    global total
+                    dis = total / (closeCounter + farCounter)
+                    break
 
                 # print('(', distance, ',', strength, ')')
                 ser.reset_input_buffer()
 
+
 while True:
-    #sock.SendData('Sent from Python: ' + str(i)) # Send this string to other application
-    #i += 1
+    print(state)
+    # sock.SendData('Sent from Python: ' + str(i)) # Send this string to other application
+    # i += 1
 
-    data = sock.ReadReceivedData() # read data
-    if data != None: # if NEW data has been received since last ReadReceivedData function call
-        print(data) # print new received data
-        state=int(data)
+    data = sock.ReadReceivedData()  # read data
+    if (
+        data != None
+    ):  # if NEW data has been received since last ReadReceivedData function call
+        print(data)  # print new received data
+        state = int(data)
 
+    if state == 0:
 
-
-
-
-
-
-
-
-    if(state == 0):
         testCounter = 1
         closeCounter = 1
         farCounter = 1
+        total = 0
         result = "null"
 
+        ######### 테스트용 지우셈 #################
+        state = 1
 
-    elif(state == 1):
+    elif state == 1:
 
         getTFminiData()
 
+    elif state == 2:
 
-    elif(state == 2 ):
-
-        if(closeCounter > farCounter):
+        if closeCounter > farCounter:
             result = "FAR"
         else:
             result = "CLOSE"
-        if(isSent==False):
-            #sock.SendData('Sent from Python: ' + result)
-            sock.SendData(result)
 
-            print(result)
-            isSent=True
-        else:
-            state=3
+        # sock.SendData('Sent from Python: ' + result)
+        sock.SendData(result)
+        print(result)
 
-            print(result)
+        ################### 테스트용############
+        state = 3
 
-    elif(state == 3 ):
-        isSent=False
+    elif state == 3:
+        saveToFile(dis)
+        state = 0
 
+    # time.sleep(1)
 
-
-
-    #time.sleep(1)
-
-
-
-
-
-while __name__ == '__main__':
+while __name__ == "__main__":
     try:
         if ser.is_open == False:
             ser.open()
 
-
-
-    except KeyboardInterrupt:   # Ctrl+C
+    except KeyboardInterrupt:  # Ctrl+C
         if ser != None:
             ser.close()
