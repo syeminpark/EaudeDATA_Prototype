@@ -22,7 +22,7 @@ let poses = [];
 let leftPos = [];
 let rightPos = [];
 let counter = 0;
-let state=1;
+let state=0;
 let limit=10; // 기준 파라미터
 let currentMillis;
 let currentMillis2;
@@ -47,12 +47,12 @@ function setup() {
 
 function draw() {
  
-  // if(timer(interval2)){
-  //  print("stateChanged")
-  //  if(state<3){
-  //    state++
-  //  }
-  // }
+  if(timer(interval2)){
+   print("stateChanged")
+   if(state<3){
+     state++
+   }
+  }
 
   //카메라를 좌우반전한다
   flip();
@@ -64,7 +64,6 @@ function draw() {
   //대기상태
   if (state==0){
       sent=true;
-      refresh=true;
       counter=0;
     }
   // textInput 변수에 의해서 start가 true가 되면
@@ -121,8 +120,7 @@ function sendMessage(){
     body: JSON.stringify({
       //여기서 내보냄
         "greeting": textOut,
-        "greeting2": counter,
-        "greeting3": sendGap
+        "greeting2": counter
     })
 }).then(function (response) {
     return response.text();
@@ -180,10 +178,6 @@ if(currentMillis-prev>interval){
           //else{
             //print("p5js")
           //}
-
-
-
-
 
       });
     }
@@ -332,8 +326,6 @@ function gap(val1,val2,val3,val4,val5,val6,val7,val8){
 
     //다시 프레임 수를 0으로 만들어 if (frameCount < 100) 코드로 돌려보낸다. 웜업 타임
 }
-
-
 
 
     </script>
