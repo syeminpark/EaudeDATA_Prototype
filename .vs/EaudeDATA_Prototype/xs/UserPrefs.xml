@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{A0CDE698-015E-7BCA-D7B2-D5F4F6FAC07F}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/03. Scripts/sceneManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/UdpSocket.cs" Line="29" Column="75" />
+      <File FileName="Assets/03. Scripts/PerfumeManager.cs" Line="17" Column="1" />
+      <File FileName="../../../../Applications/Unity/Hub/Editor/2019.4.26f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" Line="1" Column="1" />
+      <File FileName="Assets/ChangeBool.cs" Line="12" Column="9" />
+      <File FileName="Assets/03. Scripts/sceneManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/03. Scripts/UdpSocket_PCB.cs" Line="63" Column="32" NotebookId="1" />
+      <File FileName="Assets/Scripts/PythonTest.cs" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e5b1e181-a500-4223-81e9-c3232994f52a" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

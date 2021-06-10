@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
+
+    public bool isAnimEnd;
     // Start is called before the first frame update
     void Start()
     {
-        
+        isAnimEnd = false;
     }
 
     // Update is called once per frame
@@ -18,10 +20,15 @@ public class sceneManager : MonoBehaviour
         {
             
         }
+
+
+        if (isAnimEnd)
+            NextScene();
     }
 
     public void NextScene()
     {
+
         SceneManager.LoadScene(1);
     }
 }
