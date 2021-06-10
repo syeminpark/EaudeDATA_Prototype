@@ -20,16 +20,25 @@ using UnityEngine.UI;
 
 public class UdpSocket : MonoBehaviour
 {
-    [HideInInspector] public bool isTxStarted = false;
+    public bool isTxStarted = false;
 
     [SerializeField] string IP = "127.0.0.1"; // local host
     [SerializeField] int rxPort = 8000; // port to receive data from Python on
-    [SerializeField] int txPort = 8001; // port to send data to Python on
+
+    [SerializeField] int txPort = 8002; // port to send data to Python on<AI>
+    [SerializeField] int tx1Port = 8001; // port to send data to Python on<TOF>
 
     int i = 0; // DELETE THIS: Added to show sending data from Unity to Python via UDP
     public string TOFResult;
+    public string HEADPOSEResult;
     public Text[] Popup_Text;
-   
+
+    
+
+
+
+    public PerfumeManager perfumemanager;
+
 
 
 
@@ -37,16 +46,19 @@ public class UdpSocket : MonoBehaviour
     UdpClient client;
     IPEndPoint remoteEndPoint;
     Thread receiveThread; // Receiving Thread
+    Thread receiveThread_HEADPOSE;
+    
 
-   // IEnumerator SendDataCoroutine() // DELETE THIS: Added to show sending data from Unity to Python via UDP
+
+    // IEnumerator SendDataCoroutine() // DELETE THIS: Added to show sending data from Unity to Python via UDP
     //{
-      //  while (true)
-        //{
-          //  SendData("Sent from Unity: " + i.ToString());
-           // i++;
-         //   yield return new WaitForSeconds(1f);
-        //}
-  //  }
+    //  while (true)
+    //{
+    //  SendData("Sent from Unity: " + i.ToString());
+    // i++;
+    //   yield return new WaitForSeconds(1f);
+    //}
+    //  }
 
     public void SendData(string message) // Use to send data to Python
     {
@@ -66,17 +78,33 @@ public class UdpSocket : MonoBehaviour
         if (TOFResult == "CLOSE")
         {
             Popup_Text[0].text = TOFResult;
-          
+            perfumemanager.Woodmystique = 2;
+            
+
         }
         if (TOFResult == "FAR")
         {
             Popup_Text[0].text = TOFResult;
+            perfumemanager.Woodmystique = 4;
+            
+
 
         }
-        else
+        if (TOFResult == "Under")
         {
+            Popup_Text[0].text = TOFResult;
+            perfumemanager.Cedarwood = 4;
+            
 
         }
+        if (TOFResult == "Over")
+        {
+            Popup_Text[0].text = TOFResult;
+            perfumemanager.Cedarwood = 2;
+        }
+
+     
+       
     }
     void Awake()
     {
@@ -92,8 +120,10 @@ public class UdpSocket : MonoBehaviour
         receiveThread.IsBackground = true;
         receiveThread.Start();
 
+     
         // Initialize (seen in comments window)
         print("UDP Comms Initialised");
+        
 
         //StartCoroutine(SendDataCoroutine()); // DELETE THIS: Added to show sending data from Unity to Python via UDP
     }
@@ -120,6 +150,8 @@ public class UdpSocket : MonoBehaviour
         }
     }
 
+
+    
 
 
     private void ProcessInput(string input)

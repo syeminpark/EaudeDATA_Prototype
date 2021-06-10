@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     Coroutine runningCoroutine = null;
     IEnumerator startCoroutine;
 
+    public PythonTest pytest;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -176,18 +178,15 @@ public class GameManager : MonoBehaviour
     }
     public void GoToZero()
     {
-        www_Req www_req = GameObject.Find("WW").GetComponent<www_Req>();
-        PythonTest pythonTest = GameObject.Find("PythonHub").GetComponent<PythonTest>();
-        www_req.appState = 0;
-        pythonTest.state = 0;
+       
+        pytest.PythonToZero();
 
     }
     // 값을 제대로 할당하고 가기 위해 넣는 안심용 코루ㅌ
     IEnumerator ToIndex()
     {
         www_Req www_req = GameObject.Find("WW").GetComponent<www_Req>();
-        PythonTest pythonTest = GameObject.Find("PythonHub").GetComponent<PythonTest>();
-        // www_req.POST();
+       
         // www_req.GET();
         // 위 논리식에 해당 안되므로 강제 부여
 
@@ -198,11 +197,12 @@ public class GameManager : MonoBehaviour
             www_req.POST();
             www_req.GET();
 
-            pythonTest.state = 0;
+            
 
             //isUserInput = true;
         }
 
+        pytest.PythonToZero();
         //isUserInput = false;
         print("잠시 후 다음 씬으로 이동합니다.");
         yield return new WaitForSeconds(5f);

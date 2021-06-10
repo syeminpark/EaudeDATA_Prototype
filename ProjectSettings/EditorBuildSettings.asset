@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/02. Scenes/Index_Prototype.unity
-    guid: 3bf2453549ad85c499344ac89440a63d
+    path: Assets/00.Scnene/INDEX.unity
+    guid: 199433316d37b0a4380bccf9a1b9a0c3
   - enabled: 1
-    path: Assets/02. Scenes/Main_Prototype+Popup.unity
-    guid: adbec0831c4d0bf47a75fc0b6428119c
+    path: Assets/02. Scenes/Main_0610.unity
+    guid: 81eeb81d5643e19498b1cfeb7f1b6465
+  - enabled: 1
+    path: Assets/02. Scenes/ManufacturePerfume.unity
+    guid: 165f95e144313274c8bf2b89540cc973
   m_configObjects: {}

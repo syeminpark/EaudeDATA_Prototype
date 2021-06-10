@@ -27,7 +27,7 @@ closeCounter = 1
 farCounter = 1
 total = 0
 state = 1  # 유니티 인풋 default=False
-ser = serial.Serial("/dev/cu.usbserial-14110", 115200)
+ser = serial.Serial("COM6", 115200)
 dis = 0
 i = 0
 

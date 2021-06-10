@@ -31,15 +31,27 @@ public class PythonTest : MonoBehaviour
         //sendToPythonText.text = "Send Number: " + numToSendToPython.ToString();
     }
 
+    public void PythonToZero()
+    {
+       
+       
+            
+            udpSocket.SendData(0.ToString());
+       
+    }
+
 
     private void Start()
     {
         udpSocket = FindObjectOfType<UdpSocket>();
+        PythonToZero();
+
         //sendToPythonText.text = "Send Number: " + numToSendToPython.ToString();
     }
 
     void Update()
     {
+       
         //pythonRcvdText.text = tempStr;
     }
 }

@@ -9,12 +9,15 @@ public class Stopwatch : MonoBehaviour
     public Text TimeCount;
     public float TimeCost;
     public bool isTimeStart;
-    
+    public float Lastime;
+    public float MaxTime=4;
+    public bool isDecide=false;
+
+    public PerfumeManager perfumemanager;
+    public int petitgrain;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -28,6 +31,20 @@ public class Stopwatch : MonoBehaviour
         {
             TimeCost = 0f;
         }
+
+        if (isDecide==true)
+        {
+            if (TimeCost > MaxTime)
+            {
+                perfumemanager.petitgrain = 4;
+}
+            else
+            {
+                perfumemanager.petitgrain = 2;
+            }
+
+            isDecide = false;
+        }
     }
 
     public void startSW()
@@ -38,5 +55,8 @@ public class Stopwatch : MonoBehaviour
     public void stopSW()
     {
         isTimeStart = false;
+        Lastime = TimeCost;
+        
+        isDecide = true;
     }
 }

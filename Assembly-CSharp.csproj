@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C155E5CE-D79C-6D0F-8958-0F8628E9ADF7}</ProjectGuid>
+    <ProjectGuid>{A0CDE698-015E-7BCA-D7B2-D5F4F6FAC07F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -77,6 +77,7 @@
     <Compile Include="Assets\03. Scripts\PostMe.cs" />
     <Compile Include="Assets\03. Scripts\Stopwatch.cs" />
     <Compile Include="Assets\03. Scripts\UDP.cs" />
+    <Compile Include="Assets\03. Scripts\UDPSock.cs" />
     <Compile Include="Assets\03. Scripts\UDP_Connector.cs" />
     <Compile Include="Assets\03. Scripts\UDP_MULTI.cs" />
     <Compile Include="Assets\03. Scripts\UDP_POST.cs" />
@@ -142,7 +143,9 @@
     <Compile Include="Assets\Modern UI Pack\Scripts\Window\WindowDragger.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Window\WindowManager.cs" />
     <Compile Include="Assets\Modern UI Pack\Scripts\Window\WindowManagerButton.cs" />
+    <Compile Include="Assets\PerfumeManager.cs" />
     <Compile Include="Assets\Scripts\PythonTest.cs" />
+    <Compile Include="Assets\Scripts\PythonTest_1.cs" />
     <Compile Include="Assets\Scripts\UdpSocket.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -696,31 +699,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/jsn07/Documents/GitHub/KioskSW/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/jsn07/Documents/GitHub/EaudeDATA_Prototype/EaudeDATA_Prototype/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
